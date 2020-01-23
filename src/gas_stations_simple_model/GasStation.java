@@ -6,9 +6,15 @@ import java.math.RoundingMode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-@Getter @EqualsAndHashCode
+/**
+ * Class representing a simple model of gas stations.
+ * 
+ * @author Aga
+ * 
+ */
+@Getter
+@EqualsAndHashCode
 public class GasStation {
-	// class representing a simple model of gas stations
 
 	private String name;
 	private BigDecimal priceOfDiesel, priceOfPetrol95, priceOfPetrol98;
@@ -24,6 +30,9 @@ public class GasStation {
 		this.amountOfPetrol98 = 0.0;
 	}
 
+	/**
+	 * This constructor creates an object based on parameters given by user.
+	 */
 	public GasStation(String name, String priceOfDiesel, String priceOfPetrol95, String priceOfPetrol98) {
 		this(name, new BigDecimal(priceOfDiesel), new BigDecimal(priceOfPetrol95), new BigDecimal(priceOfPetrol98));
 		this.amountOfDiesel = 0.0;
@@ -85,13 +94,27 @@ public class GasStation {
 		}
 	}
 
+	/**
+	 * This method fills up fuel in a tank.
+	 * 
+	 * @param typeOfFuel A type of fuel to fill the tank with.
+	 * @param quantity   An amount of fuel to fill the tank with.
+	 */
 	public void fillUpTank(String typeOfFuel, double quantity) {
 		if (quantity < 0) {
 			throw new IllegalArgumentException();
 		}
 		setAmountOfFuel(typeOfFuel, quantity);
 	}
-	
+
+	/**
+	 * This method refuels a car.
+	 * 
+	 * @param typeOfFuel A type of fuel to fill up a car.
+	 * @param quantity   An amount of fuel to fill up a car.
+	 * @return An amount to be paid for the refueled car.
+	 * @throws DeficiencyOfFuelException Appears in case of deficiency of fuel in a tank.
+	 */
 	public BigDecimal fillUpCar(String typeOfFuel, double quantity) throws DeficiencyOfFuelException {
 		if (this.getAmountOfFuel(typeOfFuel) < quantity) {
 			throw new DeficiencyOfFuelException("Niewystarczająca ilość żądanego paliwa.");

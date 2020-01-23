@@ -7,8 +7,13 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Unit tests of a class representing a simple model of gas stations.
+ * 
+ * @author Aga
+ *
+ */
 public class GasStationTest {
-	// unit tests of class representing a simple model of gas stations
 
 	private GasStation gasStation;
 
